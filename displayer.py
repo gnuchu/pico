@@ -1,13 +1,11 @@
 import tm1637
 from machine import Pin
-from utime import sleep
-mydisplay = tm1637.TM1637(clk=Pin(16), dio=Pin(17))
+import time
+
+timedisplay = tm1637.TM1637(clk=Pin(16), dio=Pin(17))
+datedisplay = tm1637.TM1637(clk=Pin(15), dio=Pin(14))
+
+timedisplay.numbers(21, 39, True)
+datedisplay.numbers(8,2, False)
  
-#show a time with colon
-x = -999
-while True:
-    mydisplay.number(x)
-    x += 1
-    if x == 9999:
-        x = -999
-    sleep(0.01)
+
